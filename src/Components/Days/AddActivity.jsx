@@ -1,20 +1,28 @@
 import React, { useState } from "react";
+import db from '../../firebase';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import firebase from "firebase/app";
 
-const AddActivity = () => {
+const AddActivity = (props) => {
     const [time, setTime] = useState("");
     const [activity, setActivity] = useState("");
+    // const [activityColor, setActivityColor] = useState("red");
+    const activityColor= "red";
     const handleSubmit = async(event) => {
         event.preventDefault();
-        // const scheduleItem = { 
-        //     time: time, 
-        //     activity: activity, 
-        // };
-        // await blogsRef.add(scheduleItem);
-        // console.log("schedule added");
+        const scheduleItem = { 
+            time: time, 
+            task: activity, 
+            color: activityColor
+        };
+        await db.collection("users").doc(props.userId).collection("Days").doc("Mon").update({
+            schedule: firebase.firestore.FieldValue.arrayUnion(scheduleItem)
+        });
+        console.log("schedule added");
+        setActivity("");
     }
     return (
         <form onSubmit={handleSubmit}>
@@ -25,7 +33,8 @@ const AddActivity = () => {
                         id="time"
                         label="Time"
                         type="time"
-                        defaultValue="07:30"
+                        value={time}
+                        onChange={(event) => setTime(event.target.value)} 
                         required
                     />
                 </Grid>
@@ -34,6 +43,8 @@ const AddActivity = () => {
                     <TextField
                         label="Activity"
                         type="text"
+                        value={activity}
+                        onChange={(event) => setActivity(event.target.value)} 
                         required
                         fullWidth
                     />

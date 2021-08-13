@@ -7,10 +7,10 @@ const Landing = () => {
 
     return (
         <Grid>
-            <h1>Schedule</h1>
-            <h2>Plan your life before Aizen or Madara do.</h2>
+            <h1>Plan your life before Aizen or Madara do.</h1>
+            <h1>Plan your day before you waste it.</h1>
             <Link to="/days">
-                <Button variant="outlined" color="primary">Plan Days</Button>
+                <Button variant="outlined" color="primary">Sign up/ Log in</Button>
             </Link>
         </Grid>
     );

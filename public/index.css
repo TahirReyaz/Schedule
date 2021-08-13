@@ -1,6 +1,6 @@
 #dayHeader {
   background-color: darkcyan;
-  height: 25vh;
+  height: 23vh;
 }
 
 #dayBody {
@@ -28,5 +28,6 @@
 .dayActivity {
   background-color: white;
   height: 7vh;
-  margin-bottom: 2px;
+  padding: 5px;
+  margin-bottom: 2px !important;
 }
