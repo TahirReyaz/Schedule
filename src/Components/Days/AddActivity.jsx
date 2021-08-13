@@ -22,7 +22,7 @@ const AddActivity = (props) => {
             schedule: firebase.firestore.FieldValue.arrayUnion(scheduleItem)
         });
         console.log("schedule added");
-        setActivity("");
+        setActivity("");// Clear the text box
     }
     return (
         <form onSubmit={handleSubmit}>
