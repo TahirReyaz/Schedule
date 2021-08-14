@@ -14,7 +14,7 @@ const Landing = () => {
                     <h1>Plan your day</h1>
                     <h1>before you waste it.</h1>
                     <Link to="/days">
-                        <Button variant="outlined" color="primary">Sign up/ Log in</Button>
+                        <Button className="themeButton">Sign up/ Log in</Button>
                     </Link>
                 </Grid>
                 <Grid item xs={4}>
@@ -22,7 +22,7 @@ const Landing = () => {
                 </Grid>
             </Grid>
             <Grid item>
-                <img src="images/vector_buildings.svg" alt="" style={{width: "100%", boxSizing: "unset"}}/>
+                <img src="images/vector_buildings.svg" alt="" style={{width: "100%"}}/>
             </Grid>
         </Grid>
     );

@@ -28,7 +28,7 @@ const DaySchedule = (props) => {
                 }
                 return 0;
             }).map(task => (// We will now map the objects after sorting
-                <Activity name={task.task} time={task.time} key={task.time}/>
+                <Activity name={task.task} time={task.time} userId={props.userId} color={task.color} key={task.time}/>
             ))}
         </Grid>
     );

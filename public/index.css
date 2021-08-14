@@ -1,10 +1,21 @@
 /********************************LANDING****************************/
 
+h1 {
+  font-family: "Montserrat";
+  line-height: 1;
+  font-size: 3rem;
+}
+
+.themeButton {
+  background-color: #6C63FF !important;
+  color: white !important;
+  font-weight: bold !important;
+}
 
 /**********************************DAYS*****************************/
 
 #dayHeader {
-  background-color: darkcyan;
+  background-color: #6C63FF;
   height: 23vh;
 }
 

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import db from '../../firebase';
+import firebase from "firebase/app";
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-import firebase from "firebase/app";
 
 const AddActivity = (props) => {
     const [time, setTime] = useState("");
