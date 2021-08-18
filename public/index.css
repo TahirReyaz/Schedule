@@ -1,22 +1,45 @@
+:root {
+  --themeColor: #6C63FF;
+}
+
 /********************************LANDING****************************/
 
-h1 {
+.taglineContainer {
+  margin-top: 5vh !important; /* Materail UI was overriding it without the !important tag */
+}
+
+.taglineContainer h1 {
   font-family: "Montserrat";
   line-height: 1;
   font-size: 3rem;
 }
 
 .themeButton {
-  background-color: #6C63FF !important;
+  background-color: var(--themeColor) !important;
   color: white !important;
   font-weight: bold !important;
+}
+
+.taglineContainer  .themeButton, #googleSignInButton {
+  margin-top: 5vh;
+}
+
+/**********************************AUTH*****************************/
+
+#googleSignInButton {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  margin-right: 5vw;
 }
 
 /**********************************DAYS*****************************/
 
 #dayHeader {
-  background-color: #6C63FF;
+  background-color: var(--themeColor);
   height: 23vh;
+  color: white;
+  padding: 10px;
 }
 
 #dayBody {
@@ -46,4 +69,7 @@ h1 {
   height: 7vh;
   padding: 5px;
   margin-bottom: 2px !important;
+  border-bottom: 3px solid var(--themeColor);
+  border-left: 3px solid var(--themeColor);
+  border-radius: 0 0 0 10px;
 }

@@ -10,7 +10,6 @@ const Days = (props) => {
             <Grid item id="dayHeader">
                 <h1>Days</h1>
                 <h2>{props.username}</h2>
-                <h3>{props.userId}</h3>
             </Grid>
             <Grid item container direction="row" id="dayBody">
                 <DayPicker />

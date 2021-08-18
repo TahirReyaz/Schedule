@@ -8,7 +8,7 @@ const Landing = () => {
     return (
         <Grid container direction="row" style={{height: "93vh"}}>
             <Grid item container style={{padding: "10px"}}>
-                <Grid item xs={8}>
+                <Grid item xs={8} className="taglineContainer">
                     <h1>Plan your life before Aizen</h1>
                     <h1>or Madara do.</h1>
                     <h1>Plan your day</h1>

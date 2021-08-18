@@ -1,10 +1,10 @@
 // React and firebase components
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "../firebase"
+import firebase from "firebase/app";
 import "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import firebase from "firebase/app";
+// import "@firebase/messaging";
 // Components for different pages
 import { SignIn } from "./auth/SignIn";
 import NavBar from "./NavBar";
@@ -13,8 +13,22 @@ import Landing from "./Landing/Landing";
 import Days from "./Days/Days"
 
 function App() {
+  // Authorisation
   const auth = firebase.auth();
   const [user] = useAuthState(auth);
+  // Push notifications
+  // const messaging = firebase.messaging();
+  // messaging.requestPermission()
+  //   .then(() => {
+  //     console.log("Permission Granted");
+  //     return(messaging.getToken());
+  //   })
+  //   .then((token) => {
+  //     console.log("Token: " + token);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
   return (
     <Router>
       <div className="App">
