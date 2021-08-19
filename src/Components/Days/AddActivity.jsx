@@ -3,16 +3,34 @@ import db from '../../firebase';
 import firebase from "firebase/app";
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 
 const AddActivity = (props) => {
     const [time, setTime] = useState("");
     const [activity, setActivity] = useState("");
-    // const [activityColor, setActivityColor] = useState("red");
-    const activityColor= "red";
-    const handleSubmit = async(event) => {
-        event.preventDefault();
+    const [activityColor, setActivityColor] = useState("#6C63FF");
+    const colours = [
+        {
+            value: "#6C63FF",
+            label: "blue"
+        },
+        {
+            value: "red",
+            label: "red"
+        },
+        {
+            value: "yellow",
+            label: "yellow"
+        },
+        {
+            value: "green",
+            label: "green"
+        },
+    ];
+    const handleSubmit = async(e) => {
+        e.preventDefault();
         const scheduleItem = { 
             time: time, 
             task: activity, 
@@ -34,20 +52,36 @@ const AddActivity = (props) => {
                         label="Time"
                         type="time"
                         value={time}
-                        onChange={(event) => setTime(event.target.value)} 
+                        onChange={e => setTime(e.target.value)} 
                         required
                     />
                 </Grid>
                 {/* Activity */}
-                <Grid item xs={9}>
+                <Grid item xs={8}>
                     <TextField
                         label="Activity"
                         type="text"
                         value={activity}
-                        onChange={(event) => setActivity(event.target.value)} 
+                        onChange={(e) => setActivity(e.target.value)} 
                         required
                         fullWidth
                     />
+                </Grid>
+                {/* Colour Picker */}
+                <Grid item xs={1}>
+                    <TextField
+                        id="selectColor"
+                        select
+                        label="Colour"
+                        value={activityColor}
+                        onChange={e => setActivityColor(e.target.value)}
+                    >
+                        {colours.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
                 </Grid>
                 {/* Add Button */}
                 <Grid item xs={1} style={{padding: "5px"}}>

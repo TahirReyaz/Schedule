@@ -2,12 +2,46 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
 const DayPicker = () => {
+    const dayList = [
+        {
+            value: "Sun",
+            label: "Sunday"
+        },
+        {
+            value: "Mon",
+            label: "Monday"
+        },
+        {
+            value: "Tue",
+            label: "Tuesday"
+        },
+        {
+            value: "Wed",
+            label: "Wednusday"
+        },
+        {
+            value: "Thu",
+            label: "Thursday"
+        },
+        {
+            value: "Fri",
+            label: "Friday"
+        },
+        {
+            value: "Sat",
+            label: "Saturday"
+        },
+    ]
 
     return (
-        <Grid item id="calendar" xs={3}>
-            Day Picker
+        <Grid container item id="dayPicker" xs={3} alignItems="center" justifyContent="center">
+            {dayList.map(day => (
+                <Grid key={day.value} item xs={8} className="day">
+                    {day.label}
+                </Grid>
+            ))}
         </Grid>
-);
+    );
 }
 
 export default DayPicker;

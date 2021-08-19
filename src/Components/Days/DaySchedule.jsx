@@ -38,7 +38,9 @@ const DaySchedule = (props) => {
         }
     });
     Push.create("Now " + currentTaskTime + "- " + currentTask + 
-    "\nNext " + nextTaskTime + "- " + nextTask);
+    "\nNext " + nextTaskTime + "- " + nextTask, {
+        tag: "Schedule"
+    });
 
     // Check it every 60 secs and show the notification when its time for next task
     setInterval(() => {
@@ -56,7 +58,9 @@ const DaySchedule = (props) => {
                 }
             });
             Push.create("Now " + currentTaskTime + "- " + currentTask + 
-            "\nNext " + nextTaskTime + "- " + nextTask);
+            "\nNext " + nextTaskTime + "- " + nextTask, {
+                tag: "Schedule"
+            });
         }
     }, 60000);
 
@@ -69,7 +73,7 @@ const DaySchedule = (props) => {
             {/* The list of tasks and activites */}
             {loading && <h1>Loading...</h1>}
             {error && <h1>{error}</h1>}
-            {scheduleDoc && scheduleArray.map(task => (// We will now map the objects after sorting
+            {scheduleArray.map(task => (// We will now map the objects after sorting
                 <Activity name={task.task} time={task.time} userId={props.userId} color={task.color} key={task.time}/>
             ))}
         </Grid>

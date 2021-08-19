@@ -19,7 +19,7 @@ const Activity = (props) => {
     }
 
     return (
-        <Grid container item direction="row" className="dayActivity">
+        <Grid container item direction="row" className="dayActivity" style={{borderBottom: `3px solid ${props.color}`, borderLeft: `3px solid ${props.color}`}}>
             <Grid item xs={2}>{props.time}</Grid>
             <Grid item xs={9}>{props.name}</Grid>
             <Grid item xs={1}>

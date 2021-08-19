@@ -47,9 +47,19 @@
   background-color: #DDD;
 }
 
-#calendar {
+#dayPicker {
   background-color: #333;
   color: white;
+  height: 70vh;
+}
+
+.day {
+  border: 2px solid white;
+  border-radius: 5px;
+  height: 10%;
+}
+.day:hover {
+  background-color: #555;
 }
 
 #addActivityContainer {
@@ -69,7 +79,5 @@
   height: 7vh;
   padding: 5px;
   margin-bottom: 2px !important;
-  border-bottom: 3px solid var(--themeColor);
-  border-left: 3px solid var(--themeColor);
   border-radius: 0 0 0 10px;
 }
