@@ -27,42 +27,44 @@ const DaySchedule = (props) => {
     });
 
     // Show the notification when the app loads
-    scheduleArray.forEach(task => {
-        if(currentTime <= task.time && count===0) {
-            nextTask = task.task;
-            nextTaskTime = task.time;
-            count++;
-        } else if(currentTime > task.time) {
-            currentTask = task.task;
-            currentTaskTime = task.time;
-        }
-    });
-    Push.create("Now " + currentTaskTime + "- " + currentTask + 
-    "\nNext " + nextTaskTime + "- " + nextTask, {
-        tag: "Schedule"
-    });
+    useEffect(() => {
+        scheduleArray.forEach(task => {
+            if(currentTime <= task.time && count===0) {
+                nextTask = task.task;
+                nextTaskTime = task.time;
+                count++;
+            } else if(currentTime > task.time) {
+                currentTask = task.task;
+                currentTaskTime = task.time;
+            }
+        });
+        Push.create("Now " + currentTaskTime + "- " + currentTask + 
+        "\nNext " + nextTaskTime + "- " + nextTask, {
+            tag: "Schedule"
+        });
+        }, []);
 
     // Check it every 60 secs and show the notification when its time for next task
-    setInterval(() => {
-        currentTime= moment().format("HH:mm");
-        if(currentTime === nextTaskTime) {
-            count=0;
-            scheduleArray.forEach(task => {
-                if(currentTime < task.time && count===0) {
-                    nextTask = task.task;
-                    nextTaskTime = task.time;
-                    count++;
-                } else if(currentTime >= task.time) {
-                    currentTask = task.task;
-                    currentTaskTime = task.time;
-                }
-            });
-            Push.create("Now " + currentTaskTime + "- " + currentTask + 
-            "\nNext " + nextTaskTime + "- " + nextTask, {
-                tag: "Schedule"
-            });
-        }
-    }, 60000);
+    // setInterval(() => {
+    //     currentTime= moment().format("HH:mm");
+    //     if(currentTime === nextTaskTime) {
+    //         count=0;
+    //         scheduleArray.forEach(task => {
+    //             if(currentTime < task.time && count===0) {
+    //                 nextTask = task.task;
+    //                 nextTaskTime = task.time;
+    //                 count++;
+    //             } else if(currentTime >= task.time) {
+    //                 currentTask = task.task;
+    //                 currentTaskTime = task.time;
+    //             }
+    //         });
+    //         Push.create("Now " + currentTaskTime + "- " + currentTask + 
+    //         "\nNext " + nextTaskTime + "- " + nextTask, {
+    //             tag: "Schedule"
+    //         });
+    //     }
+    // }, 60000);
 
     return (
         <Grid container item direction="column" id="daySchedule" xs={9}>
