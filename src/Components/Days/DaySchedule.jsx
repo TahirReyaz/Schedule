@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import db from '../../firebase';
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import Push from "push.js";
@@ -42,7 +42,7 @@ const DaySchedule = (props) => {
         "\nNext " + nextTaskTime + "- " + nextTask, {
             tag: "Schedule"
         });
-        }, []);
+    }, [scheduleArray]);
 
     // Check it every 60 secs and show the notification when its time for next task
     // setInterval(() => {

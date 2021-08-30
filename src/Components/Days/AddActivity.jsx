@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import db from '../../firebase';
 import firebase from "firebase/app";
+// import ColourLabel from "./ColourLabel";
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -14,19 +15,23 @@ const AddActivity = (props) => {
     const colours = [
         {
             value: "#6C63FF",
-            label: "blue"
+            label: "🔵"
+            // label: <ColourLabel color="#6C63FF" />
         },
         {
             value: "red",
-            label: "red"
+            label: "🔴"
+            // label: <ColourLabel color="red" />
         },
         {
             value: "yellow",
-            label: "yellow"
+            label: "🟡"
+            // label: <ColourLabel color="yellow" />
         },
         {
             value: "green",
-            label: "green"
+            label: "🟢"
+            // label: <ColourLabel color="green" />
         },
     ];
     const handleSubmit = async(e) => {
@@ -78,7 +83,7 @@ const AddActivity = (props) => {
                     >
                         {colours.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
-                            {option.label}
+                                {option.label}
                             </MenuItem>
                         ))}
                     </TextField>
