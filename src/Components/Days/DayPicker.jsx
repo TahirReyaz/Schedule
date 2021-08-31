@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
-const DayPicker = () => {
+const DayPicker = (props) => {
     const dayList = [
         {
             value: "Sun",
@@ -31,12 +31,20 @@ const DayPicker = () => {
             value: "Sat",
             label: "Saturday"
         },
-    ]
+    ];
+    
+    const dayPicked = (e) => {
+        e.target.parentNode.childNodes.forEach((day) => {
+            day.style.backgroundColor = "";
+        })
+        e.target.style.backgroundColor = "#999";
+        props.upDay(e.target.id);
+    }
 
     return (
         <Grid container item id="dayPicker" xs={3} alignItems="center" justifyContent="center">
             {dayList.map(day => (
-                <Grid key={day.value} item xs={8} className="day">
+                <Grid key={day.value} item xs={8} className="day" onClick={dayPicked} id={day.value}>
                     {day.label}
                 </Grid>
             ))}

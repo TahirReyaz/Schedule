@@ -8,11 +8,12 @@ import Activity from './Activity';
 import Grid from '@material-ui/core/Grid';
 
 const DaySchedule = (props) => {
+    let day = props.day;
     const scheduleArray= [];
     let currentTime= moment().format("HH:mm");
     let currentTask, nextTask, currentTaskTime, nextTaskTime, count=0;
     const scheduleRef = db.collection("users").doc(props.userId).collection("Days");
-    const query = scheduleRef.where("name", "==", "adrak");
+    const query = scheduleRef.where('__name__', '==' , day);
     const [scheduleDoc, loading, error] = useCollectionData(query); 
     scheduleDoc && scheduleDoc[0].schedule.sort((a, b) => {// Sort the array of objects using a compareFunction in sort() method
         if (a.time > b.time) {
@@ -38,9 +39,13 @@ const DaySchedule = (props) => {
                 currentTaskTime = task.time;
             }
         });
-        Push.create("Now " + currentTaskTime + "- " + currentTask + 
-        "\nNext " + nextTaskTime + "- " + nextTask, {
-            tag: "Schedule"
+        Push.Permission.request(() => {
+            Push.create("Now " + currentTaskTime + "- " + currentTask + 
+            "\nNext " + nextTaskTime + "- " + nextTask, {
+                tag: "Schedule"
+            });
+        }, () => {
+            console.log("Permission Denied");
         });
     }, [scheduleArray]);
 
@@ -75,8 +80,8 @@ const DaySchedule = (props) => {
             {/* The list of tasks and activites */}
             {loading && <h1>Loading...</h1>}
             {error && <h1>{error}</h1>}
-            {scheduleArray.map(task => (// We will now map the objects after sorting
-                <Activity name={task.task} time={task.time} userId={props.userId} color={task.color} key={task.time}/>
+            {scheduleArray.length === 0 ? <h1>No tasks</h1> : scheduleArray.map(task => (// We will now map the objects after sorting
+                <Activity name={task.task} time={task.time} color={task.color} key={task.time}/>
             ))}
         </Grid>
     );
