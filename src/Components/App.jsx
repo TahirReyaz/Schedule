@@ -11,6 +11,7 @@ import NavBar from "./NavBar";
 import Error404 from "./Error404";
 import Landing from "./Landing/Landing";
 import Days from "./Days/Days"
+import DailyPlanner from "./DailyPlanner/DailyPlanner";
 
 function App() {
   // Authorisation
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path="/days">
             { user ? <Days username={user.displayName} userId={user.uid}/> : <SignIn />}
+          </Route>
+          <Route path="/dailyplanner">
+            { user ? <DailyPlanner username={user.displayName} userId={user.uid}/> : <SignIn />}
           </Route>
           <Route path="/weeks">
             { user ? <Error404 /> : <SignIn />}
