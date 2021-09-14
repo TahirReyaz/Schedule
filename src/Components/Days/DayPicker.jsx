@@ -40,14 +40,20 @@ const DayPicker = (props) => {
         e.target.style.backgroundColor = "#999";
         props.upDay(e.target.id);
     }
+    const newDay = () => {
+        console.log("new day");
+    }
 
     return (
-        <Grid container item id="dayPicker" xs={3} alignItems="center" justifyContent="center">
+        <Grid container item id="dayPicker" xs={3} alignItems="center" justifyContent="space-around">
             {dayList.map(day => (
-                <Grid key={day.value} item xs={8} className="day" onClick={dayPicked} id={day.value}>
+                <button key={day.value} className="day" onClick={dayPicked} id={day.value}>
                     {day.label}
-                </Grid>
+                </button>
             ))}
+            <button className="day" onClick={newDay}>
+                +
+            </button>
         </Grid>
     );
 }

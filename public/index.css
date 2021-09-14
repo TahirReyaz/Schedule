@@ -48,15 +48,21 @@
 }
 
 #dayPicker {
+  height: 70vh;
+  display: flex;
   background-color: #333;
   color: white;
-  height: 70vh;
 }
 
 .day {
+  height: 10%;
+  width: 40%;
+  background-color: #333;
   border: 2px solid white;
   border-radius: 5px;
-  height: 10%;
+  outline: 2px solid white;
+  outline-offset: 2px;
+  color: white;
   text-align: center;
 }
 .day:hover {
