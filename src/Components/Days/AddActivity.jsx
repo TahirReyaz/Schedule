@@ -46,6 +46,7 @@ const AddActivity = (props) => {
         });
         console.log("schedule added");
         setActivity("");// Clear the text box
+        setActivityColor("#6C63FF");// Reset the colour
     }
     return (
         <form onSubmit={handleSubmit}>
